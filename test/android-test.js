@@ -9,10 +9,10 @@ const options = {
     capabilities: {
         platformName: "Android",
         platformVersion: "5",
-        appPackage: "com.cba.payable",
-        appActivity: "com.cba.payable.Launcher",
-        appWaitActivity: "com.cba.payable.Login",
-        deviceName: "Android PAX"
+        appPackage: "com.aslam.app",
+        appActivity: "com.aslam.app.Launcher",
+        appWaitActivity: "com.aslam.app.Login",
+        deviceName: "Android Automation"
     }
 }
 
@@ -34,27 +34,18 @@ describe('Create Android session', function () {
         expect(element).to.exist
     })
 
-    it('should type in bank', async () => {
+    it('should type in editText', async () => {
 
-        const edtBankType = await driver.elementById(resourceId("edtBankType"))
         const edtEmail = await driver.elementById(resourceId("edtEmail"))
-        const edtPassword = await driver.elementById(resourceId("edtPassword"))
         const btnSignIn = await driver.elementById(resourceId("btnSignIn"))
 
-        await edtBankType.sendKeys('seylan', () => {
-            console.log('Done')
-        })
+        await edtEmail.sendKeys('aslam@gmail.com')
 
-        await edtEmail.sendKeys('aslampax')
-        await edtPassword.sendKeys('abc123450')
-
-        const bank = await edtBankType.text()
-        const username = await edtBankType.text()
-        const password = await edtBankType.text()
+        const email = await edtEmail.text()
 
         await btnSignIn.click();
 
-        // assert.equal(value, 'seylan')
+        assert.equal(email, 'aslam@gmail.com')
     })
 
 });

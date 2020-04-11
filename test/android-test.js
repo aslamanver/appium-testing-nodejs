@@ -30,7 +30,7 @@ describe('Create Android session', function () {
     })
 
     it('should create and destroy a session', async () => {
-        const element = await driver.elementById(resourceId("edtBankType"))
+        const element = await driver.elementById(resourceId("edtEmail"))
         expect(element).to.exist
     })
 
